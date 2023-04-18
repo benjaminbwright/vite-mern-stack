@@ -1,13 +1,13 @@
 // express
-const express = require("express");
-const path = require("path");
+const express = require('express');
+const path = require('path');
 // apollo server
-const { ApolloServer } = require("apollo-server-express");
+const { ApolloServer } = require('apollo-server-express');
 // database connection
-const db = require("./config/connection.js");
+const db = require('./config/connection');
 
 // graphql schemas
-const { typeDefs, resolvers } = require("./schemas");
+const { typeDefs, resolvers } = require('./schemas');
 // app & port
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -26,20 +26,20 @@ app.use(
 );
 
 // point to dist folder
-app.use(express.static(path.join(__dirname, "../client/dist")));
+app.use(express.static(path.join(__dirname, '../client/dist')));
 
-app.get("/", (req, res) =>
-  res.sendFile(__dirname, "../client/dist/index.html")
+app.get('/', (req, res) =>
+  res.sendFile(__dirname, '../client/dist/index.html')
 );
 
 // startserver
-const startServer = async (typeDefs, resolvers) => {
+const startServer = async () => {
   await server.start();
   server.applyMiddleware({ app });
 
-  db.once("open", () => {
+  db.once('open', () => {
     app.listen(PORT, () => {
-      console.log("server running on http://localhost:3001");
+      console.log('server running on http://localhost:3001');
       console.log(`graphql at http://localhost:${PORT}${server.graphqlPath}`);
     });
   });
@@ -49,4 +49,4 @@ const startServer = async (typeDefs, resolvers) => {
 
 // connect the db
 // start the express server
-startServer(typeDefs, resolvers);
+startServer();

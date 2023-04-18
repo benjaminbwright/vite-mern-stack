@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "install": "cd client && npm install && ../server && npm install",
+    "test": "eslint",
+    "install": "cd client && npm install && cd ../server && npm install",
     "develop": "concurrently \"npm run server\" \"npm run client\"",
     "client": "cd client && npm run dev",
     "server": "cd server && npm run watch",
@@ -25,8 +25,6 @@
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.20.6",
     "eslint-plugin-react-hooks": "^4.1.0",
-    "markdown-link-reporter": "^1.1.1",
-    "markdownlint": "^0.25.0",
     "prettier": "^2.0.5"
   }
 }

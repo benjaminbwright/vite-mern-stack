@@ -1,12 +1,11 @@
-import { useState } from "react";
-import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
-import ClickyButton from "./components/ClickyButton";
+import React, { useState } from 'react';
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import reactLogo from './assets/react.svg';
+import viteLogo from './assets/vite.svg';
+import './App.css';
 
 const client = new ApolloClient({
-  uri: "/graphql",
+  uri: '/graphql',
   cache: new InMemoryCache(),
 });
 
@@ -17,17 +16,16 @@ function App() {
     <ApolloProvider client={client}>
       <div className="App">
         <div>
-          <a href="https://vitejs.dev" target="_blank">
+          <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
             <img src={viteLogo} className="logo" alt="Vite logo" />
           </a>
-          <a href="https://reactjs.org" target="_blank">
+          <a href="https://reactjs.org" target="_blank" rel="noreferrer">
             <img src={reactLogo} className="logo react" alt="React logo" />
           </a>
         </div>
         <h1>Vite + React</h1>
-        <ClickyButton />
         <div className="card">
-          <button onClick={() => setCount((count) => count + 1)}>
+          <button type="button" onClick={() => setCount(count + 1)}>
             count is {count}
           </button>
         </div>
